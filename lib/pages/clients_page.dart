@@ -132,7 +132,7 @@ class _ClientsPageState extends State<ClientsPage> {
                 return TextButton(
                     child: const Text("Salvar"),
                     onPressed: () async {
-                      list.clients.add(Client(
+                      list.addClient(Client(
                           name: nomeInput.text,
                           email: emailInput.text,
                           type: dropdownValue));
