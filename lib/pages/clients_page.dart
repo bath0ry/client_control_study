@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../components/hamburger_menu.dart';
+import '../models/types.dart';
 
 class ClientsPage extends StatefulWidget {
   const ClientsPage({Key? key, required this.title}) : super(key: key);
@@ -68,7 +69,8 @@ class _ClientsPageState extends State<ClientsPage> {
   void createType(context) {
     TextEditingController nomeInput = TextEditingController();
     TextEditingController emailInput = TextEditingController();
-    ClientType dropdownValue = types[0];
+    Types listTypes = Provider.of(context, listen: false);
+    ClientType dropdownValue = listTypes.types[0];
 
     showDialog(
         context: context,
@@ -114,7 +116,7 @@ class _ClientsPageState extends State<ClientsPage> {
                             dropdownValue = newValue as ClientType;
                           });
                         },
-                        items: types.map((ClientType type) {
+                        items: listTypes.types.map((ClientType type) {
                           return DropdownMenuItem<ClientType>(
                             value: type,
                             child: Text(type.name),
